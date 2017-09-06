@@ -1,0 +1,183 @@
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class GUI {
+
+	private JFrame frame;
+	private JTextField textField1;
+	private JTextField textField2;
+	private JTextField textFieldResult;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUI window = new GUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public GUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		textField1 = new JTextField();
+		textField1.setBounds(39, 51, 125, 20);
+		frame.getContentPane().add(textField1);
+		textField1.setColumns(10);
+		
+		textField2 = new JTextField();
+		textField2.setBounds(221, 51, 133, 20);
+		frame.getContentPane().add(textField2);
+		textField2.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("RESULT ->");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.BLACK);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setBounds(54, 204, 110, 35);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textFieldResult = new JTextField();
+		textFieldResult.setBounds(179, 204, 133, 35);
+		frame.getContentPane().add(textFieldResult);
+		textFieldResult.setColumns(10);
+		
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnAdd.setForeground(Color.WHITE);
+		btnAdd.setBackground(Color.BLACK);
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				float num1,num2,ans;
+				try
+				{
+				 num1=Float.parseFloat(textField1.getText());
+				 num2=Float.parseFloat(textField2.getText());
+				 ans=num1+num2;
+				 textFieldResult.setText(Float.toString(ans));
+				}
+				catch(Exception e1)
+				{
+					JOptionPane.showMessageDialog(null,"Please Enter A Valid Number");
+				}
+			}
+		});
+		btnAdd.setBounds(39, 100, 125, 23);
+		frame.getContentPane().add(btnAdd);
+		
+		JButton btnSubtract = new JButton("SUBTRACT");
+		btnSubtract.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				float num1,num2,ans;
+				try
+				{
+				 num1=Float.parseFloat(textField1.getText());
+				 num2=Float.parseFloat(textField2.getText());
+				 ans=num1-num2;
+				 textFieldResult.setText(Float.toString(ans));
+				}
+				catch(Exception e2)
+				{
+					JOptionPane.showMessageDialog(null,"Please Enter A Valid Number");
+				}
+			}
+		});
+		btnSubtract.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnSubtract.setForeground(Color.WHITE);
+		btnSubtract.setBackground(Color.BLACK);
+		btnSubtract.setBounds(221, 100, 133, 23);
+		frame.getContentPane().add(btnSubtract);
+		
+		JButton btnMultiply = new JButton("MULTIPLY");
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				float num1,num2,ans;
+				try
+				{
+				 num1=Float.parseFloat(textField1.getText());
+				 num2=Float.parseFloat(textField2.getText());
+				 ans=num1*num2;
+				 textFieldResult.setText(Float.toString(ans));
+				}
+				catch(Exception e1)
+				{
+					JOptionPane.showMessageDialog(null,"Enter A Valid Number");
+				}
+			}
+		});
+		btnMultiply.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnMultiply.setForeground(Color.WHITE);
+		btnMultiply.setBackground(Color.BLACK);
+		btnMultiply.setBounds(39, 151, 125, 23);
+		frame.getContentPane().add(btnMultiply);
+		
+		JButton btnDivide = new JButton("DIVIDE");
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				float num1,num2,ans;
+				try
+				{
+				 num1=Float.parseFloat(textField1.getText());
+				 num2=Float.parseFloat(textField2.getText());
+				 ans=num1/num2;
+				 textFieldResult.setText(Float.toString(ans));
+				}
+				catch(Exception e1)
+				{
+					JOptionPane.showMessageDialog(null,"Enter A Valid Number");
+				}
+			}
+		});
+		btnDivide.setForeground(Color.WHITE);
+		btnDivide.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnDivide.setBackground(Color.BLACK);
+		btnDivide.setBounds(221, 151, 133, 23);
+		frame.getContentPane().add(btnDivide);
+		
+		JLabel lblNumber = new JLabel("Number 1");
+		lblNumber.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumber.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNumber.setForeground(Color.BLACK);
+		lblNumber.setBackground(Color.BLACK);
+		lblNumber.setBounds(39, 26, 125, 14);
+		frame.getContentPane().add(lblNumber);
+		
+		JLabel lblNumber_1 = new JLabel("Number 2");
+		lblNumber_1.setForeground(Color.BLACK);
+		lblNumber_1.setBackground(Color.BLACK);
+		lblNumber_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNumber_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNumber_1.setBounds(221, 26, 133, 14);
+		frame.getContentPane().add(lblNumber_1);
+	}
+}
